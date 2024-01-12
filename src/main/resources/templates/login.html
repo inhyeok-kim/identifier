@@ -102,15 +102,16 @@
 <th:block layout:fragment="content">
   <div id="body" class="text-center">
     <main class="form-signin w-100 m-auto">
-      <form th:action="@{/auth/login}" th:object="${loginInfo}" method="post">
+      <form th:action="@{/auth/login}" th:object="${loginVO}" method="post">
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <small class="text-danger" th:text="${message}"></small>
 
         <div class="form-floating">
-          <input type="text" class="form-control" id="id" placeholder="Your ID" th:filed="id" th:value="${id}">
+          <input type="text" class="form-control" name="id" id="id" placeholder="Your ID" th:filed="*{id}" th:value="${loginVO.id}">
           <label for="id">ID</label>
         </div>
         <div class="form-floating">
-          <input type="password" class="form-control" id="pwd" placeholder="Your Password" th:filed="password">
+          <input type="password" class="form-control" name="password" id="pwd" placeholder="Your Password" th:filed="*{password}">
           <label for="pwd">Password</label>
         </div>
 
