@@ -1,7 +1,10 @@
-
 spring:
   mvc:
     static-path-pattern: /public/**
+
+  session:
+    jdbc:
+      initialize-schema: NEVER
 
   datasource:
     url: jdbc:mariadb://localhost:3306/identifier
@@ -10,12 +13,12 @@ spring:
     password: identifier
 
   thymeleaf:
-    # 참조 경로 설정
+    # ?? ?? ??
     prefix: classpath:/templates/
     suffix: .html
-    # thymeleaf 사용 설정
+    # thymeleaf ?? ??
     enabled: true
-    # templates 디렉토리에 파일이 없으면 에러 발생
+    # templates ????? ??? ??? ?? ??
     check-template-location: true
 
 server:
