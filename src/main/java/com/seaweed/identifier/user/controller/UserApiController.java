@@ -1,7 +1,8 @@
-package com.seaweed.identifier.user;
+package com.seaweed.identifier.user.controller;
 
 import com.seaweed.identifier.common.APIResponse;
 import com.seaweed.identifier.common.ApiController;
+import com.seaweed.identifier.user.UserService;
 import com.seaweed.identifier.user.vo.UserVO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-public class UserController extends ApiController {
+public class UserApiController extends ApiController {
 
     @Autowired
     private UserService userService;

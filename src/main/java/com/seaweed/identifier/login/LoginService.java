@@ -3,6 +3,7 @@ package com.seaweed.identifier.login;
 import com.seaweed.identifier.SessionContext;
 import com.seaweed.identifier.user.vo.UserVO;
 import com.seaweed.identifier.user.UserRepository;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,13 @@ public class LoginService {
             }
         }
         return new LoginVO();
+    }
+
+    public void logout(){
+        HttpSession session = SessionContext.getSession();
+        LoginVO loginVO = SessionContext.getAuth();
+        session.invalidate();
+        loginSessionMap.remove(loginVO.getSeq(), session);
     }
 
     private LoginVO loginProc(LoginVO user){

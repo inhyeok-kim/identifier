@@ -114,6 +114,8 @@
           <input type="password" class="form-control" name="password" id="pwd" placeholder="Your Password" th:filed="*{password}">
           <label for="pwd">Password</label>
         </div>
+        <input type="hidden" name="to" th:value="${param.to}">
+
 
         <div class="checkbox mb-3">
           <label>

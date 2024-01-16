@@ -1,6 +1,7 @@
 package com.seaweed.identifier.config;
 
 import com.seaweed.identifier.login.LoginService;
+import com.seaweed.identifier.login.LoginVO;
 import com.seaweed.identifier.user.vo.UserVO;
 import jakarta.servlet.http.HttpSessionEvent;
 import jakarta.servlet.http.HttpSessionListener;
@@ -17,7 +18,7 @@ public class CustomSessionListener implements HttpSessionListener {
         var session = se.getSession();
         if (session != null) {
             if(session.getAttribute("auth") != null){
-                UserVO user = (UserVO)session.getAttribute("auth");
+                LoginVO user = (LoginVO)session.getAttribute("auth");
                 LoginService.loginSessionMap.remove(user.getSeq(),session);
             }
         }
