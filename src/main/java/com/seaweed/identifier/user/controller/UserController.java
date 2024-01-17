@@ -26,6 +26,7 @@ public class UserController {
     @GetMapping("/user/list")
     public String viewUserList(HttpServletRequest req, HttpServletResponse res
         , Model model){
+        model.addAttribute("menu","user");
         Pageable pageReq = PageRequest.of(0,10);
         List<UserVO> result = userService.findUsers(pageReq);
         model.addAttribute("list",result);

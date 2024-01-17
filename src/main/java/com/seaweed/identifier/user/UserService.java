@@ -15,6 +15,10 @@ public class UserService{
         return userRepository.findAll(pageable).getContent();
     }
 
+    public long countUsers(){
+        return userRepository.count();
+    }
+
     public void saveUser(UserVO user){
         userRepository.save(user);
     }

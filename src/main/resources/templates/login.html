@@ -1,9 +1,12 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/layout/default}">
-
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Starter Template · Bootstrap v5.2</title>
+
+    <link href="/public/css/bootstrap.min.css" rel="stylesheet">
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -98,35 +101,34 @@
 
     </style>
   </head>
+  <body>
+    <div id="body" class="text-center">
+      <main class="form-signin w-100 m-auto">
+        <form th:action="@{/login}" th:object="${loginVO}" method="post">
+          <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+          <small class="text-danger" th:text="${message}"></small>
 
-<th:block layout:fragment="content">
-  <div id="body" class="text-center">
-    <main class="form-signin w-100 m-auto">
-      <form th:action="@{/login}" th:object="${loginVO}" method="post">
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-        <small class="text-danger" th:text="${message}"></small>
-
-        <div class="form-floating">
-          <input type="text" class="form-control" name="id" id="id" placeholder="Your ID" th:filed="*{id}" th:value="${loginVO.id}">
-          <label for="id">ID</label>
-        </div>
-        <div class="form-floating">
-          <input type="password" class="form-control" name="password" id="pwd" placeholder="Your Password" th:filed="*{password}">
-          <label for="pwd">Password</label>
-        </div>
-        <input type="hidden" name="to" th:value="${param.to}">
+          <div class="form-floating">
+            <input type="text" class="form-control" name="id" id="id" placeholder="Your ID" th:filed="*{id}" th:value="${loginVO.id}">
+            <label for="id">ID</label>
+          </div>
+          <div class="form-floating">
+            <input type="password" class="form-control" name="password" id="pwd" placeholder="Your Password" th:filed="*{password}">
+            <label for="pwd">Password</label>
+          </div>
+          <input type="hidden" name="to" th:value="${param.to}">
 
 
-        <div class="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
-      </form>
-    </main>
-  </div>
-</th:block>
-    
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>
+          </div>
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+          <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
+        </form>
+      </main>
+    </div>
+  </body>
+
 </html>

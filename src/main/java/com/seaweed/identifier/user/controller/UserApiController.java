@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -22,12 +23,22 @@ public class UserApiController extends ApiController {
     private UserService userService;
 
     @GetMapping("/user/search")
-    public List<UserVO> findUserList(HttpServletRequest req, HttpServletResponse res
+    public APIResponse findUserList(HttpServletRequest req, HttpServletResponse res
                                      , @RequestParam(name="pageNo",defaultValue = "0") int pageNo
                                     , @RequestParam(name="pageSize",defaultValue = "1") int pageSize){
-        Pageable pageReq = PageRequest.of(pageNo,pageSize);
-        List<UserVO> result = userService.findUsers(pageReq);
-        return result;
+        APIResponse response = new APIResponse();
+        if(pageNo < 0 || pageSize < 1){
+            response.setStatus(APIResponse.Status.Failed);
+        } else {
+            Pageable pageReq = PageRequest.of(pageNo,pageSize);
+            List<UserVO> result = userService.findUsers(pageReq);
+            long count = userService.countUsers();
+
+            response.setStatus(APIResponse.Status.Ok);
+            response.setData(Map.of("list",result,"count",count));
+        }
+
+        return response;
     }
 
     @PostMapping("/user/update")

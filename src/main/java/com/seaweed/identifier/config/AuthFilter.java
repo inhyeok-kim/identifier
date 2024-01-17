@@ -16,18 +16,21 @@ public class AuthFilter implements Filter {
         var req = (HttpServletRequest)p0;
         var res = (HttpServletResponse)p1;
         String requestURI = req.getRequestURI();
+        boolean flag = false;
         if(!isWhiteList(requestURI)){
             var session = req.getSession(false);
             if(session == null || session.getAttribute("auth") == null){
                 if(StringUtils.hasText(req.getRequestURI()) && !req.getRequestURI().equals("/")){
                     res.sendRedirect("/login?to="+req.getRequestURI());
+                    flag = true;
                 } else {
                     res.sendRedirect("/login");
+                    flag = true;
                 }
 
             }
         }
-        if (p2 != null) {
+        if (p2 != null && !flag) {
             p2.doFilter(p0,p1);
         }
 
