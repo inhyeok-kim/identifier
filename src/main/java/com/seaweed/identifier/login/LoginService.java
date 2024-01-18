@@ -1,8 +1,6 @@
 package com.seaweed.identifier.login;
 
-import com.seaweed.identifier.SessionContext;
-import com.seaweed.identifier.user.vo.UserVO;
-import com.seaweed.identifier.user.UserRepository;
+import com.seaweed.identifier.common.SessionContext;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;

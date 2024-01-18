@@ -1,4 +1,4 @@
-package com.seaweed.identifier;
+package com.seaweed.identifier.common;
 
 import com.seaweed.identifier.login.LoginVO;
 import com.seaweed.identifier.user.vo.UserVO;
